@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="RegressionSuite" parallel="tests">
+	<listeners>
+		<listener class-name="Utils.BaseTests" />
+	</listeners>
+	<test name="verifySplitterClassUsingOneParam">
+		<groups>
+			<run>
+				<include name="Sanity"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="tests.FirstTest">
+				<methods>
+					<include name="verifySplitterClassUsingOneParam" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="verifySplitterClassUsingTwoParam">
+		<classes>
+			<class name="tests.FirstTest">
+				<methods>
+					<include name="verifySplitterClassUsingTwoParam" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
+
