@@ -1,4 +1,4 @@
-package Utils;
+package tests;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -11,6 +11,8 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
+import Utils.LogManager;
+
 public class BaseTests implements ITestListener 
 {
 
@@ -22,12 +24,12 @@ public class BaseTests implements ITestListener
 	@BeforeSuite
 	public void beforeSuite (ITestContext context)
 	{
-		String log4jConfigFile = System.getProperty("user.dir")
-				+ File.separator + "src\\main\\resources\\log4j.xml";
+		String log4jConfigFile = "";
+		log4jConfigFile = System.getProperty("user.dir") + File.separator + "src\\main\\resources\\log4j.xml";
 		System.setProperty("log4j.configurationFile", log4jConfigFile);
 		LogManager.info("Running .." + context.getCurrentXmlTest().getSuite().getName());
 	}
-	
+
 	@BeforeMethod
 	public void beforeMethod (Method method)
 	{
@@ -75,7 +77,7 @@ public class BaseTests implements ITestListener
 	{
 		LogManager.info(getTestMethodName(iTestResult));
 	}
-	
+
 	@AfterMethod
 	public void afterMethod (ITestResult result)
 	{

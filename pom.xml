@@ -4,6 +4,11 @@
 	<groupId>VlocityProject</groupId>
 	<artifactId>VlocityProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<suiteXmlFile>${basedir}/suites/RegressionSuite.xml</suiteXmlFile>
+		<skipTests>true</skipTests>
+	</properties>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
@@ -14,6 +19,29 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+					<fork>true</fork>
+					<executable>C:\Program Files\Java\jre1.8.0_131\bin\javac</executable>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.16</version>
+				<configuration>
+					<!-- <suiteXmlFiles> <suiteXmlFile>${basedir}/testng.xml</suiteXmlFile> 
+						</suiteXmlFiles> -->
+					<!-- c:\Temp>java org.testng.TestNG -groups regressiontest - testname 
+						AllTests -->
+					<!--<groups>regressiontest</groups> -->
+					<!-- <trimStackTrace>false</trimStackT;race> -->
+					<!--<suitename>AllTests</suitename> -->
+					<suiteXmlFiles>
+						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+					</suiteXmlFiles>
+					<!-- Build with '-DskipTests=true' to bypass test execution @ build 
+						time Default: false -->
+					<skipTests>${skipTests}</skipTests>
+					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 			</plugin>
 		</plugins>

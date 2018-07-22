@@ -2,14 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="RegressionSuite" parallel="tests">
 	<listeners>
-		<listener class-name="Utils.BaseTests" />
+		<listener class-name="tests.BaseTests" />
 	</listeners>
 	<test name="verifySplitterClassUsingOneParam">
-		<groups>
-			<run>
-				<include name="Sanity"></include>
-			</run>
-		</groups>
+		<!-- <groups> <run> <include name="Sanity"></include> </run> </groups> -->
 		<classes>
 			<class name="tests.FirstTest">
 				<methods>
